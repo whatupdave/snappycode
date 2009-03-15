@@ -1,0 +1,6 @@
+%h3
+  = @post.title
+%p.title-footer="posted on #{@post.date.to_s}"
+
+.content
+  =haml @post.content, :layout => false

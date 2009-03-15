@@ -1,0 +1,9 @@
+-@posts.each do |post|
+  .post
+    %h3
+      %a{:href => "#{post.url}"}
+        = post.title
+    %p.title-footer=" posted on #{post.date.to_s}"
+  
+    .content
+      =haml post.content, :layout => false

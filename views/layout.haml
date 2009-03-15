@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+%html
+  %head
+    %title snappyco.de
+    %link{ :href=>'/reset.css',  :type=> 'text/css', :rel=>'stylesheet' }
+    %link{ :href=>'/screen.css', :type=> 'text/css', :rel=>'stylesheet' }
+  %body
+    %h1
+      %a{ :href => '/'}
+        %img{:src=>"/images/logo.png"}
+      
+    %span#tagline The snappiest of snap
+    
+    = yield
