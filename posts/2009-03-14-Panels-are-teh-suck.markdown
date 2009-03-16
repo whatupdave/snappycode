@@ -1,0 +1,5 @@
+So I've been rocking SXSW for the last few days, having a blast.  One thing not so fun is the panel format. Which basically means you get a few potentially interesting people together at a desk, get someone to ask them a few shallow questions and have them chat amongst themselves for an hour. **Total suckage**. I've yet to see it work, although Tim Lucas assures me that he did once *actually witness* this occurring. 
+
+Even though it may be possible to run an interesting panel, why!? Surely if we have smart people with smart things to say, they can prepare something, have an agenda, and present. Or if that's too difficult just get the audience to ask questions, you know those peeps who paid to hear people talk about stuff they found interesting.
+
+Luckily there have been a few oasis's (wtf?) in the self-indulgent chat desert, a particular stand out for me was Lawrence Lessig's talk about how to restore faith in the American congress. It was well thought out, well spoken, well rehearsed and had a real point to be made.
