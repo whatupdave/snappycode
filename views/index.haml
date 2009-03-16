@@ -6,4 +6,4 @@
     %p.title-footer=" posted on #{post.date.to_s}"
   
     .content
-      =haml post.content, :layout => false
+      =write_post_content post
