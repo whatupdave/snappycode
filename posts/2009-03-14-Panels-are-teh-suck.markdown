@@ -2,4 +2,6 @@ So I've been rocking SXSW for the last few days, having a blast.  One thing not 
 
 Even though it may be possible to run an interesting panel, why!? Surely if we have smart people with smart things to say, they can prepare something, have an agenda, and present. Or if that's too difficult just get the audience to ask questions, you know those peeps who **paid** to hear people talk about stuff they found interesting.
 
-Luckily there have been a few oasis's (wtf?) in the self-indulgent chat desert, a particular stand out for me was Lawrence Lessig's talk about how to restore faith in the American congress. It was well thought out, well spoken, well rehearsed and had a real point to be made. Walked out of the room totally charged, I almost wished I was american so could go and [change congress](http://change-congress.org). *Almost*
+Luckily there have been a few oasis's (wtf?) in the self-indulgent chat desert, a particular stand out for me was Lawrence Lessig's talk about how to restore faith in the American congress. It was well thought out, well spoken, well rehearsed and had a real point to be made. Walked out of the room totally charged, I almost wished I was american so could go and [change congress](http://change-congress.org). 
+
+*Almost*
