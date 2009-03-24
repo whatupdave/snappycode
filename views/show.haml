@@ -1,6 +1,7 @@
-%h3
-  = @post.title
-%p.title-footer="posted on #{@post.date.to_s}"
+.post
+  %h3
+    = @post.title
+  %p.title-footer=" posted on #{@post.date.to_s}"
 
-.content
-  =write_post_content @post
+  .content
+    =write_post_content @post
