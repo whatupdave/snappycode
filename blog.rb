@@ -54,8 +54,12 @@ end
 
 get '/' do
   @posts = Post.find_all
-  
   haml :index
+end
+
+get '/rss.xml' do
+  @posts = Post.find_all
+  haml :rss, :layout => false
 end
 
 get '/posts/:post' do
@@ -63,26 +67,3 @@ get '/posts/:post' do
   haml :show
 end
 
-get '/rss.xml' do
-  @posts = Post.find_all
-  builder do |xml|
-    xml.instruct! :xml, :version => '1.0'
-    xml.rss :version => "2.0" do
-      xml.channel do
-        xml.title ":snappyco.de => Dave Newman"
-        xml.description "Dave's blog of snappy cool"
-        xml.link "http://snappyco.de/rss.xml"
-        
-        @posts.each do |post|
-          xml.item do
-            xml.title post.title
-            xml.link "http://snappyco.de#{post.url}"
-            xml.description post.html
-            xml.pubDate Time.parse(post.date.to_s).rfc822()
-            xml.guid "http://snappyco.de#{post.url}"
-          end
-        end
-      end
-    end
-  end
-end
