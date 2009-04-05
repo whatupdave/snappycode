@@ -1,0 +1,13 @@
+!!! XML
+%rss{ :version => '2.0'}
+  %channel
+    %title= ":snappyco.de => Dave Newman"
+    %description Dave's blog of snappy cool
+    %link= "http://snappyco.de/rss.xml"
+    - @posts.each do |post|
+      %item
+        %title=post.title
+        %link="http://snappyco.de#{post.url}"
+        %description=post.html
+        %pubDate=Time.parse(post.date.to_s).rfc822()
+        %guid="http://snappyco.de#{post.url}"
