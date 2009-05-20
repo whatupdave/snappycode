@@ -1,19 +1,52 @@
-!page_width    = 1000px
+
+!page_width = 1000px
+!post_width = 700px
+!side_bar_width = !page_width - !post_width
+!left_margin = 30px
+!col1 = 500px
+!col2 = 200px
+
+!header_height = 100px
+
+!link_colour = #ff5113
 
 a
   :text-decoration none
+  :color = !link_colour
 
 a:hover
   :text-decoration underline
 
 body
-  :width = !page_width
-  :margin 20px auto
   :font
-    :family "Helvetica Neue",Arial,Helvetica,sans-serif
+    :family "Lucida Grande",sans-serif
 
+.header
+  :height = !header_height
+  :padding-left = !left_margin
+  :background-color #333
+
+  .sub_heading
+    :position relative
+    :float left
+    :width = !col2
+    :height 100%
+    
+    .rss
+      :position absolute
+      :right 0
+      :bottom 29px
 h1
+  :width = !col1
   :float left
+  :font
+    :size 68px
+  
+  a
+    :color #fff
+  a:hover
+    :text-decoration none
+  
 
 #tagline
   :float right
@@ -21,22 +54,32 @@ h1
 
 .post
   :clear both
-  :padding 20px
-  :border-top solid 1px #666
+  :padding-top = 20px
+  :padding-left = !left_margin
+  :width = !post_width
   
   h3
+    :color = !link_colour
     :float left
     :margin-right 10px
-    :font-size 1.5em
+    :margin-bottom 10px
+    :font-size 40px
+    :line-height 50px
+    a
+      
   
   .title-footer
     :color #666
     :line-height 2.5em
+    :float right
     
   .content
     :clear both
+    p:first-child
+      :font-size 130%
     p
       :padding-bottom 1em
+      :font-size 120%
     em
       :font-style italic
     strong

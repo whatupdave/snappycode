@@ -14,11 +14,13 @@
     %link{ :href=>'/reset.css',  :type=> 'text/css', :rel=>'stylesheet' }
     %link{ :href=>'/screen.css', :type=> 'text/css', :rel=>'stylesheet' }
   %body
-    %h1
-      %a{ :href => '/'}
-        %img{:src=>"/images/logo.png"}
-    
-    %p  
-      %span#tagline Dave Newman's snappiest snaps
+    .header
+      %h1
+        %a{ :href => '/'} snappyco.de
+      .sub_heading
+        %a.rss{ :href => '/rss.xml' }
+          %img{ :src => '/images/rss.png', :alt => 'rss'}
     
     = yield
+    
+    .side_bar
