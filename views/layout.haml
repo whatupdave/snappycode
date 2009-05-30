@@ -21,7 +21,8 @@
         %a.rss{ :href => '/rss.xml' }
           %img{ :src => '/images/rss.png', :alt => 'rss'}
     
-    = yield
+    #posts
+      = yield
     
     :javascript
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

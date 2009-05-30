@@ -2,13 +2,17 @@
 !page_width = 1000px
 !post_width = 700px
 !side_bar_width = !page_width - !post_width
-!left_margin = 30px
+!post_margin = 30px
 !col1 = 500px
 !col2 = 200px
 
+
 !header_height = 100px
+!header_indent = !post_margin * 2 - 3
 
 !link_colour = #ff5113
+!side_colour = #e8e5da
+!text_colour = #333
 
 a
   :text-decoration none
@@ -18,19 +22,21 @@ a:hover
   :text-decoration underline
 
 body
+  :background-color = !side_colour
   :font
-    :family "Lucida Grande",sans-serif
+    :family "Lucida Grande","Trebuchet MS",arial, sans-serif
     :size 12px
+  :color = !text_colour
 
 .header
   :height = !header_height
-  :padding-left = !left_margin
+  :padding-left = !header_indent
   :background-color #333
 
   .sub_heading
     :position relative
     :float left
-    :width = !col2
+    :width = !col2 - !post_margin
     :height 100%
     
     .rss
@@ -53,15 +59,26 @@ h1
   :float right
   :color #343
 
+#posts
+  :width = !post_width
+  :margin-left = !post_margin
+
 .post
   :clear both
+  :background-color #fff
+
+  :margin-top = !post_margin
+  :margin-bottom = !post_margin
   :padding-top = 20px
-  :padding-left = !left_margin
-  :width = !post_width
+  :padding-left = !post_margin
+  :padding-right = !post_margin
   
   h3
-    :font-family Helvetica, Arial
-    :font-size 36px
+    :font
+      :family Helvetica, Arial
+      :size 36px
+      :weight bold
+    :letter-spacing -2px
     :color = !link_colour
     :float left
     :margin-right 10px
@@ -86,3 +103,4 @@ h1
       :font-style italic
     strong
       :font-weight bold
+      :color #000
