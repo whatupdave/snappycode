@@ -71,8 +71,8 @@ helpers do
   end
 end
 
-before do
-  path = tweets_html
+def cache(options = {}, &block)
+  path = options[:file]
   
   if File.exists? path
     cache_mins = (Time.now - File.mtime(path)) / 60
@@ -80,13 +80,21 @@ before do
     cache_mins = 999999999999
   end
 
-  if cache_mins > 1
+  if cache_mins > options[:expiry]
+    text = yield
+    
+    FileUtils.mkdir_p(File.dirname(path))
+    File.open(path, 'w') { |f| f.write( text ) }
+  end
+  
+end
+
+before do
+  cache(:file => tweets_html, :expiry => 30) do
     puts 'refreshing tweets'
     @tweets = Twitter::Search.new.from('whatupdave').fetch().results
     text = haml :tweets, :layout => false
-
-    FileUtils.mkdir_p(File.dirname(path))
-    File.open(path, 'w') { |f| f.write( text ) }
+    text
   end
 end
 
