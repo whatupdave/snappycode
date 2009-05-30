@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'sinatra'
 require 'bluecloth'
+require 'twitter'
+require 'fileutils' 
 
 class Post
   attr_reader :url
@@ -37,9 +39,40 @@ class Post
   end
 end
 
+def tweets_html
+  File.join(File.dirname(__FILE__), 'tmp/cache', 'tweets.html') 
+end
+
 helpers do
   def write_post_content(post)
     post.html
+  end
+  
+  def tweets
+    File.read(tweets_html)
+  end
+  
+  def format_tweet(text)
+    text
+  end
+end
+
+before do
+  path = tweets_html
+  
+  if File.exists? path
+    cache_mins = (Time.now - File.mtime(path)) / 60
+  else
+    cache_mins = 999999999999
+  end
+
+  if cache_mins > 1
+    puts 'refreshing tweets'
+    @tweets = Twitter::Search.new.from('whatupdave').fetch().results
+    text = haml :tweets, :layout => false
+
+    FileUtils.mkdir_p(File.dirname(path))
+    File.open(path, 'w') { |f| f.write( text ) }
   end
 end
 

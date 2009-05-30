@@ -3,6 +3,7 @@
 !post_width = 700px
 !side_bar_width = !page_width - !post_width
 !post_margin = 30px
+!post_top_margin = 20px
 !col1 = 500px
 !col2 = 200px
 
@@ -60,6 +61,7 @@ h1
   :color #343
 
 #posts
+  :float left
   :width = !post_width
   :margin-left = !post_margin
 
@@ -69,7 +71,7 @@ h1
 
   :margin-top = !post_margin
   :margin-bottom = !post_margin
-  :padding-top = 20px
+  :padding-top = !post_top_margin
   :padding-left = !post_margin
   :padding-right = !post_margin
   
@@ -104,3 +106,28 @@ h1
     strong
       :font-weight bold
       :color #000
+      
+#me
+  :background-color #fff
+  :float left
+  :margin-left = !post_margin
+  :margin-top =  !post_margin
+  :padding-left = !post_margin
+  :padding-bottom = !post_top_margin
+  
+  :width 200px
+  
+  h2
+    :color #333
+    :font
+      :family Helvetica, Arial
+      :size 18px
+      :weight bold
+    :letter-spacing -2px
+  
+  .entry
+    :padding-top = !post_top_margin
+    
+    ul.tweets li
+      :padding-top 10px
+    

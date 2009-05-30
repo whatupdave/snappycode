@@ -24,6 +24,19 @@
     #posts
       = yield
     
+    #me
+      .entry
+        %h2 About Me
+        %p I'm a sydney based software developer interested in building awesome stuff
+
+      .entry
+        %h2
+          Twitter (
+          %a{ :href => "http://twitter.com/whatupdave"} @whatupdave
+          )
+        
+        =tweets
+      
     :javascript
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
