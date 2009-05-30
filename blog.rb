@@ -25,11 +25,7 @@ class Post
   end
   
   def self.find_all
-    posts = []
-    Dir.glob(posts_dir + '*.*') do |f|
-      posts << Post.new(f)
-    end
-    posts
+    Dir.glob(posts_dir + '*.*').collect { |f| Post.new(f) }.sort { |a,b| b.date <=> a.date }
   end
   
   def self.find_by_title(title)
