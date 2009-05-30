@@ -53,7 +53,7 @@ helpers do
   end
   
   def format_tweet(text)
-    text
+    text.gsub (/(http[^ ]*)/) { |link| "<a href=\"#{link}\">#{link}</a>" }
   end
 end
 
