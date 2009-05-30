@@ -43,6 +43,20 @@ def tweets_html
   File.join(File.dirname(__FILE__), 'tmp/cache', 'tweets.html') 
 end
 
+class String
+  def linkify
+    gsub (/(http[^ ]*)/) { "<a href=\"#{$1}\">#{$1}</a>" }
+  end
+  
+  def link_mentions
+    gsub(/@([^ ]*)/){ "@<a href=\"http://twitter.com/#{$1}\">#{$1}</a>" }
+  end
+
+  def link_hash_tags
+    gsub(/#([^ ]*)/){ "#<a href=\"http://twitter.com/#search?q=%23#{$1}\">#{$1}</a>" }
+  end
+end
+
 helpers do
   def write_post_content(post)
     post.html
@@ -51,9 +65,9 @@ helpers do
   def tweets
     File.read(tweets_html)
   end
-  
+    
   def format_tweet(text)
-    text.gsub (/(http[^ ]*)/) { |link| "<a href=\"#{link}\">#{link}</a>" }
+    text.linkify.link_mentions.link_hash_tags
   end
 end
 
