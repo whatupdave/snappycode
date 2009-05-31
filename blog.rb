@@ -110,9 +110,13 @@ def cache(options = {}, &block)
 end
 
 before do
+  def get_non_reply_tweets
+    Twitter::Search.new.from('whatupdave').fetch().results.reject { |tweet| tweet.text[0] == 64 } .first(5)
+  end
+  
   cache(:file => tweets_html, :expiry => 30) do
     # puts 'refreshing tweets'
-    @tweets = Twitter::Search.new.from('whatupdave').fetch().results.first(5)
+    @tweets = get_non_reply_tweets
     text = haml :tweets, :layout => false
     text
   end
