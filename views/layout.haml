@@ -31,11 +31,18 @@
 
       .entry
         %h2
-          Twitter (
-          %a{ :href => "http://twitter.com/whatupdave"} @whatupdave
-          )
+          %a{ :href => "http://twitter.com/whatupdave"} On Twitter
         
         =tweets
+        
+      .entry
+        %h2
+          %a{ :href => "http://github.com/snappycode"} On Github
+
+        =github_repos
+    
+    #footer
+      = markdown :footer
       
     :javascript
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

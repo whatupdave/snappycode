@@ -3,6 +3,8 @@ require 'sinatra'
 require 'bluecloth'
 require 'twitter'
 require 'fileutils' 
+require 'net/http'
+require 'json'
 
 class Post
   attr_reader :url
@@ -43,17 +45,21 @@ def tweets_html
   File.join(File.dirname(__FILE__), 'tmp/cache', 'tweets.html') 
 end
 
+def github_repos_html
+  File.join(File.dirname(__FILE__), 'tmp/cache', 'github_repos.html') 
+end
+
 class String
   def linkify
     gsub (/(http[^ ]*)/) { "<a href=\"#{$1}\">#{$1}</a>" }
   end
   
   def link_mentions
-    gsub(/@([^ ]*)/){ "@<a href=\"http://twitter.com/#{$1}\">#{$1}</a>" }
+    gsub(/@([^ ]*)/){ "@<a class=\"mention\" href=\"http://twitter.com/#{$1}\">#{$1}</a>" }
   end
 
   def link_hash_tags
-    gsub(/#([^ ]*)/){ "#<a href=\"http://twitter.com/#search?q=%23#{$1}\">#{$1}</a>" }
+    gsub(/#([^ ]*)/){ "<a class=\"hash_tag\" href=\"http://twitter.com/#search?q=%23#{$1}\">##{$1}</a>" }
   end
 end
 
@@ -69,6 +75,16 @@ helpers do
   def format_tweet(text)
     text.linkify.link_mentions.link_hash_tags
   end
+  
+  def github_repos
+    File.read(github_repos_html)
+  end
+  
+  def markdown(file)
+    markdown_file = File.dirname(__FILE__) + '/content/' + file.to_s + '.markdown'
+
+    BlueCloth.new(File.read(markdown_file)).to_html
+  end
 end
 
 def cache(options = {}, &block)
@@ -81,7 +97,11 @@ def cache(options = {}, &block)
   end
 
   if cache_mins > options[:expiry]
-    text = yield
+    begin
+      text = yield
+    #rescue
+    #  text = "Service unavailable"
+    end
     
     FileUtils.mkdir_p(File.dirname(path))
     File.open(path, 'w') { |f| f.write( text ) }
@@ -91,9 +111,16 @@ end
 
 before do
   cache(:file => tweets_html, :expiry => 30) do
-    puts 'refreshing tweets'
-    @tweets = Twitter::Search.new.from('whatupdave').fetch().results
+    # puts 'refreshing tweets'
+    @tweets = Twitter::Search.new.from('whatupdave').fetch().results.first(5)
     text = haml :tweets, :layout => false
+    text
+  end
+  cache(:file => github_repos_html, :expiry => 30) do
+    # puts 'refreshing github repos'
+    url = 'http://github.com/api/v1/json/snappycode'
+    @github_data = JSON.load(Net::HTTP.get_response(URI.parse(url)).body)
+    text = haml :github_repos, :layout => false
     text
   end
 end

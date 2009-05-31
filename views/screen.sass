@@ -11,6 +11,7 @@
 !header_height = 100px
 !header_indent = !post_margin * 2 - 3
 
+!header_colour = #333
 !link_colour = #ff5113
 !side_colour = #e8e5da
 !text_colour = #333
@@ -32,7 +33,7 @@ body
 .header
   :height = !header_height
   :padding-left = !header_indent
-  :background-color #333
+  :background-color = !header_colour
 
   .sub_heading
     :position relative
@@ -124,9 +125,23 @@ h1
       :weight bold
     :letter-spacing -2px
   
+    a
+      :color #333
+  
   .entry
     :padding-top = !post_top_margin
     
     ul.tweets li
       :padding-top 10px
     
+    a.hash_tag
+      :color #999
+
+#footer
+  :background-color = !header_colour
+  :clear both
+  :color #fff
+  :height 100px
+  :padding-left = !header_indent
+  :padding-top 10px
+  

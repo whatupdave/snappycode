@@ -1,0 +1,4 @@
+%ul.github_repos
+  - @github_data['user']['repositories'].each do |repo|
+    %li
+      %a{:href => "#{repo['url']}" }= repo['name']
