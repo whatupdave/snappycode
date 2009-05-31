@@ -99,8 +99,8 @@ def cache(options = {}, &block)
   if cache_mins > options[:expiry]
     begin
       text = yield
-    #rescue
-    #  text = "Service unavailable"
+    rescue
+     text = "Service unavailable"
     end
     
     FileUtils.mkdir_p(File.dirname(path))
@@ -108,6 +108,8 @@ def cache(options = {}, &block)
   end
   
 end
+
+
 
 before do
   def get_non_reply_tweets

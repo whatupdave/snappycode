@@ -25,19 +25,21 @@
       = yield
     
     #me
-      .entry
-        %h2 About Me
+      .entry.photo
+        %img{:src => '/images/me.jpg' }
+
+      #about_me.entry
         %p I'm a sydney based software developer. I love building awesome stuff.
 
       .entry
         %h2
-          %a{ :href => "http://twitter.com/whatupdave"} On Twitter
+          %a{ :href => "http://twitter.com/whatupdave"} I'm on Twitter
         
         =tweets
         
       .entry
         %h2
-          %a{ :href => "http://github.com/snappycode"} On Github
+          %a{ :href => "http://github.com/snappycode"} I'm on Github
 
         =github_repos
     
