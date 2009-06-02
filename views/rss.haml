@@ -8,6 +8,17 @@
       %item
         %title=post.title
         %link="http://snappyco.de#{post.url}"
-        %description=post.html
+        %description
+          post.html
+          :javascript
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+
+          :javascript
+            try {
+              var pageTracker = _gat._getTracker("UA-8936021-1");
+              pageTracker._trackPageview();
+            } catch(err) {}
+          
         %pubDate=Time.parse(post.date.to_s).rfc822()
         %guid="http://snappyco.de#{post.url}"

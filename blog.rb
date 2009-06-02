@@ -51,7 +51,7 @@ end
 
 class String
   def linkify
-    gsub (/(http[^ ]*)/) { "<a href=\"#{$1}\">#{$1}</a>" }
+    gsub(/(http[^ ]*)/) { "<a href=\"#{$1}\">#{$1}</a>" }
   end
   
   def link_mentions
@@ -106,24 +106,19 @@ def cache(options = {}, &block)
     FileUtils.mkdir_p(File.dirname(path))
     File.open(path, 'w') { |f| f.write( text ) }
   end
-  
 end
-
-
 
 before do
   def get_non_reply_tweets
-    Twitter::Search.new.from('whatupdave').fetch().results.reject { |tweet| tweet.text[0] == 64 } .first(5)
+    Twitter::Search.new.from("whatupdave").fetch().results.reject { |tweet| tweet.text[0] == 64 } .first(5)
   end
   
   cache(:file => tweets_html, :expiry => 30) do
-    # puts 'refreshing tweets'
     @tweets = get_non_reply_tweets
     text = haml :tweets, :layout => false
     text
   end
   cache(:file => github_repos_html, :expiry => 30) do
-    # puts 'refreshing github repos'
     url = 'http://github.com/api/v1/json/snappycode'
     @github_data = JSON.load(Net::HTTP.get_response(URI.parse(url)).body)
     text = haml :github_repos, :layout => false
