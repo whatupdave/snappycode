@@ -1,3 +1,6 @@
 %ul.tweets
   - @tweets.each do |tweet|
-    %li= format_tweet tweet.text
+    %li
+      %a{:href => tweet.source} &#x221e;
+      = format_tweet tweet.text
+      
