@@ -1,1 +1,0 @@
-This site is [open source](http://github.com/snappycode/snappycode) and built in [ruby](http://www.ruby-lang.org/en/) with help from [sinatra](http://github.com/sinatra/sinatra), [haml](http://haml.hamptoncatlin.com/) and [sass](http://haml.hamptoncatlin.com/)

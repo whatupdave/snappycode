@@ -1,9 +1,9 @@
--@posts.each do |post|
-  .post
+-@articles.each do |article|
+  .article
     %h3
-      %a{:href => "#{post.url}"}
-        = post.title
-    %p.title-footer=" posted on #{post.date.to_s}"
+      %a{:href => "#{article.url}"}
+        = article.title
+    %p.title-footer=" published on #{article.date.to_s}"
     
     .content
-      =write_post_content post
+      = render_article(article)

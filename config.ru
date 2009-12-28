@@ -1,3 +1,2 @@
-require 'blog'
-
+require 'app'
 run Sinatra::Application

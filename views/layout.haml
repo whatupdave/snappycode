@@ -21,7 +21,7 @@
         %a.rss{ :href => '/rss.xml' }
           %img{ :src => '/images/rss.png', :alt => 'rss'}
     
-    #posts
+    #articles
       = yield
     
     #me
@@ -44,7 +44,7 @@
         =github_repos
     
     #footer
-      = markdown :footer
+      = partial :footer
       
     :javascript
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

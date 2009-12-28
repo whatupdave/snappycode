@@ -4,12 +4,12 @@
     %title= ":snappyco.de => Dave Newman"
     %description Dave's blog of snappy cool
     %link= "http://snappyco.de/rss.xml"
-    - @posts.each do |post|
+    - @articles.each do |article|
       %item
-        %title=post.title
-        %link="http://snappyco.de#{post.url}"
+        %title=article.title
+        %link="http://snappyco.de#{article.url}"
         %description
-          post.html
+          article.html
           :javascript
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -20,5 +20,5 @@
               pageTracker._trackPageview();
             } catch(err) {}
           
-        %pubDate=Time.parse(post.date.to_s).rfc822()
-        %guid="http://snappyco.de#{post.url}"
+        %pubDate=Time.parse(article.date.to_s).rfc822()
+        %guid="http://snappyco.de#{article.url}"

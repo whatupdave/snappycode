@@ -1,7 +1,7 @@
-.post
+.article
   %h3
-    = @post.title
-  %p.title-footer=" posted on #{@post.date.to_s}"
+    = @article.title
+  %p.title-footer=" published on #{@article.date.to_s}"
 
   .content
-    =write_post_content @post
+    =render_article @article

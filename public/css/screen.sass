@@ -1,15 +1,15 @@
 
 !page_width = 1000px
-!post_width = 700px
-!side_bar_width = !page_width - !post_width
-!post_margin = 30px
-!post_top_margin = 20px
+!article_width = 700px
+!side_bar_width = !page_width - !article_width
+!article_margin = 30px
+!article_top_margin = 20px
 !col1 = 500px
 !col2 = 200px
 
 
 !header_height = 100px
-!header_indent = !post_margin * 2 - 3
+!header_indent = !article_margin * 2 - 3
 
 !header_colour = #333
 !link_colour = #ff5113
@@ -38,7 +38,7 @@ body
   .sub_heading
     :position relative
     :float left
-    :width = !col2 - !post_margin
+    :width = !col2 - !article_margin
     :height 100%
     
     .rss
@@ -62,20 +62,20 @@ h1
   :float right
   :color #343
 
-#posts
+#articles
   :float left
-  :width = !post_width
-  :margin-left = !post_margin
+  :width = !article_width
+  :margin-left = !article_margin
 
-.post
+.article
   :clear both
   :background-color #fff
 
-  :margin-top = !post_margin
-  :margin-bottom = !post_margin
-  :padding-top = !post_top_margin
-  :padding-left = !post_margin
-  :padding-right = !post_margin
+  :margin-top = !article_margin
+  :margin-bottom = !article_margin
+  :padding-top = !article_top_margin
+  :padding-left = !article_margin
+  :padding-right = !article_margin
   
   h3
     :font
@@ -110,12 +110,12 @@ h1
 #me
   :background-color #fff
   :float left
-  :margin-left = !post_margin
-  :margin-top =  !post_margin
-  :margin-bottom =  !post_margin
-  :padding-left = !post_margin
-  :padding-right = !post_margin
-  :padding-bottom = !post_top_margin
+  :margin-left = !article_margin
+  :margin-top =  !article_margin
+  :margin-bottom =  !article_margin
+  :padding-left = !article_margin
+  :padding-right = !article_margin
+  :padding-bottom = !article_top_margin
   
   :width 200px
   
@@ -131,7 +131,7 @@ h1
       :color #333
   
   .entry
-    :padding-top = !post_top_margin
+    :padding-top = !article_top_margin
     
     ul.tweets li
       :padding-top 10px
