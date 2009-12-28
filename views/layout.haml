@@ -13,7 +13,8 @@
     
     %link{ :href=>'/reset.css',  :type=> 'text/css', :rel=>'stylesheet' }
     %link{ :href=>'/screen.css', :type=> 'text/css', :rel=>'stylesheet' }
-  %body
+    %link{ :href=>'/js/prettify/prettify.css', :type=> 'text/css', :rel=>'stylesheet' }
+  %body{:onload => "prettyPrint()"}
     .header
       %h1
         %a{ :href => '/'} snappyco.de
@@ -56,3 +57,4 @@
         pageTracker._trackPageview();
       } catch(err) {}
     
+    %script{:src => '/js/prettify/prettify.js', :type => 'text/javascript'}    

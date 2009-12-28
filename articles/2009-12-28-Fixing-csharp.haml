@@ -1,0 +1,22 @@
+-# title: Fixing C#
+-# tags: csharp 
+:markdown
+  For better or worse I spend a lot of time coding in c#. Bouncing back and forth between c#, ruby, javascript and objective-c I inevitably reflect a lot on the different language features and let me tell you that c# is my least favourite language to work in. But with a few improvements it could be made a passable programming language!
+  
+  Of course I understand that c# is a static language and won't ever have all the awesomeness of a real dynamic type system, so I'm not advocating a full overhaul, just a few additions.
+  
+  I'm going to start simple in this article and cover more in the future. So for today I present:
+  
+  > Flexible string quotation
+  
+  Ever written code like this?
+
+%pre.prettyprint
+  var message = "Hello \"Dave\"";
+:markdown
+  All that messy quote escaping could be gone if we can quote strings with double or single quotes. We could rewrite that like this:
+
+%pre.prettyprint
+  var message = 'Hello "Dave"';
+:markdown
+  Much nicer!

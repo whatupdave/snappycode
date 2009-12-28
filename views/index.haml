@@ -1,9 +1,2 @@
 -@articles.each do |article|
-  .article
-    %h3
-      %a{:href => "#{article.url}"}
-        = article.title
-    %p.title-footer=" published on #{article.date.to_s}"
-    
-    .content
-      = render_article(article)
+  =partial :article, {:article => article, :index => true}

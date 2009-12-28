@@ -11,3 +11,9 @@ class String
     gsub(/#([^ ]*)/){ "<a class=\"hash_tag\" href=\"http://twitter.com/#search?q=%23#{$1}\">##{$1}</a>" }
   end
 end
+
+class Object
+  def try(method)
+    send method if respond_to? method
+  end
+end

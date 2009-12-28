@@ -1,0 +1,17 @@
+.article
+  %h3
+    - if index
+      %a{:href => article.url}= article.title
+    - else
+      = article.title
+    
+  %p.title-footer=" published on #{article.date.to_s}"
+
+  .content
+    =render_article article
+  
+  .footer
+    %p 
+      Tags:
+      - article.tags.each do |tag|
+        %a.tag{:href => "/tags/#{tag}"}= tag

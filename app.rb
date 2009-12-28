@@ -75,25 +75,32 @@ end
 
 get /^(.+)\.css$/ do |style_file|
   sass_file = File.join('public','css',"#{style_file}.sass")
-  p sass_file
   pass unless File.exist?(sass_file)
   content_type :css
+  etag File.mtime(sass_file)
   sass File.read(sass_file)
 end
 
 get '/' do
   @articles = Article.find_all
+  etag @articles.first.etag
   view :index, :layout => :layout
 end
 
 get '/rss.xml' do
   @articles = Article.find_all
+  content_type 'application/rss+xml'
   haml :rss, :layout => false
 end
 
 get '/articles/:article' do
   @article = Article.find_by_title(params[:article])
   haml :show
+end
+
+get '/tags/:tag' do
+  @articles = Article.find_by_tag(params[:tag])
+  haml :index
 end
 
 # backwards compatibility
