@@ -83,7 +83,6 @@ end
 
 get '/' do
   @articles = Article.find_all
-  etag @articles.first.etag
   view :index, :layout => :layout
 end
 

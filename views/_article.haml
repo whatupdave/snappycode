@@ -15,3 +15,6 @@
       Tags:
       - article.tags.each do |tag|
         %a.tag{:href => "/tags/#{tag}"}= tag
+    - if index
+      %a{:href => "#{article.url}#disqus_thread"} Comments
+    
