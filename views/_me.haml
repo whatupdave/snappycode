@@ -1,0 +1,23 @@
+.entry.photo
+  %img{:src => '/images/me.jpg' }
+
+#about_me.entry
+  :markdown
+    I'm a sydney based software developer. I currently build stuff with ruby, c# and objective-c.
+  %p
+    - email = obscure_email('dave@snappyco.de')
+    &#8211;
+    %a{:href => "mailto:#{email}"}= email
+    
+
+.entry
+  %h2
+    %a{ :href => "http://twitter.com/whatupdave"} I'm on Twitter
+  
+  =tweets
+  
+.entry
+  %h2
+    %a{ :href => "http://github.com/snappycode"} I'm on Github
+
+  =github_repos
