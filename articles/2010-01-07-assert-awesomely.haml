@@ -1,0 +1,54 @@
+-# title: Assert Awesomely
+-# tags: csharp 
+:markdown
+  I've been working on nicer test code and error messages. Here's what I started with:
+%pre.prettyprint.small
+  :preserve
+    var steve = new Zombie();
+    Assert.That(steve.Mood, Is.EqualTo("I'm hungry for brains!"));
+:markdown
+  Which tells me
+%pre.prettyprint.small
+  :preserve
+    Expected string length 22 but was 27. Strings differ at index 1.
+    Expected: "I'm hungry for brains!"
+    But was:  "I want to shuffle aimlessly"
+    ------------^
+
+:markdown
+  > That's crap!
+  
+  What I _really_ wanted was a short behaviour style test and an error message that told me steve's mood was not what I expected it to be. 
+  
+  First the test syntax can be fixed with an extension method:
+%pre.prettyprint.small
+  :preserve
+    public static void ShouldBe<T>(this T actual, T expected)
+    {
+        actual.AssertAwesomely(Is.EqualTo(expected), expected);
+    }
+:markdown
+  The test:
+%pre.prettyprint.small
+  :preserve
+    var steve = new Zombie();
+    steve.Mood.ShouldBe("I'm hungry for brains!");
+:markdown
+  Nice!
+  
+  Now on to the error message. I did some experimenting with c#'s reflection and stack trace api and turned up the file and line number of the test that went kaboom! I then applied some loose morals and sweet regular expressions to turn the error into this:
+%pre.prettyprint.smaller
+  :preserve
+    steve.Mood 
+        should be 
+            "I'm hungry for brains!" 
+        but was 
+            "I want to shuffle aimlessly"
+            
+:markdown
+  Not bad if I do say so myself.
+  
+  And here's the code (Feel free to fork and improve). [http://gist.github.com/252084.js?file=AwesomeTestExtensions.cs](http://gist.github.com/252084.js?file=AwesomeTestExtensions.cs)
+
+%script{:src=>"http://gist.github.com/252084.js?file=AwesomeTestExtensions.cs"}
+  
