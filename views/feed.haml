@@ -1,0 +1,26 @@
+!!! xml
+%feed{:xmlns => 'http://www.w3.org/2005/Atom'}
+  %title snappyco.de => Dave Newman
+  %link{:href => 'http://snappyco.de/feed.atom', :rel => 'self', :hreflang => 'en', :type => 'application/atom+xml'}/
+  %link{:href => "http://snappyco.de", :rel => "alternate", :hreflang => "en", :type => "text/html"}/
+ 
+  %author
+    %name Dave Newman
+    %uri http://snappyco.de
+    %email dave@snappyco.de
+ 
+  %icon http://snappyco.de/favicon.ico
+ 
+  %id tag:snappyco.de,2009-10-08:/
+  %updated= @articles.first.date.xmlschema
+ 
+  - @articles.each do |article|
+    %entry
+      %id== tag:snappyco.de,#{article.date.strftime('%Y-%m-%d')}:#{article.url}
+      %title{:type => "html"}= strip_tags(article.title)
+      %published= article.date.xmlschema
+      %updated= article.date.xmlschema
+      %link{:href => "http://snappyco.de#{article.url}", :rel => 'alternate', :hreflang => 'en', :type => 'text/html'}/
+      %content{:type => 'xhtml', 'xml:lang' => 'en', 'xml:base' => 'http://snappyco.de'}
+        %div{:xmlns => "http://www.w3.org/1999/xhtml"}= absoluteify_links(render_article(article))
+ 

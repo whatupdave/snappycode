@@ -1,5 +1,11 @@
 require 'init'
 
+class Date
+  def xmlschema
+    strftime("%Y-%m-%dT%H:%M:%S%Z")
+  end unless defined?(xmlschema)
+end
+
 helpers do
   def partial(name, locals={})
     haml "_#{name}".to_sym, :layout => false, :locals => locals
@@ -41,6 +47,14 @@ helpers do
       output = upper.index(char) + 65 if upper.include?(char)
       output ? "&##{output};" : (char == '@' ? '&#0064;' : char)
     }.join
+  end
+  
+  def strip_tags(html)
+    html.gsub(/<\/?[^>]*>/, '')
+  end
+  
+  def absoluteify_links(html)
+    html.gsub(/href=(["'])(\/.*?)(["'])/, 'href=\1http://snappyco.de\2\3')        .gsub(/src=(["'])(\/.*?)(["'])/, 'src=\1http://snappyco.de\2\3')
   end
 end
 
@@ -94,6 +108,12 @@ end
 get '/' do
   @articles = Article.find_all
   view :index, :layout => :layout
+end
+
+get '/feed.atom' do
+  @articles = Article.find_all
+  content_type 'application/atom+xml'
+  haml :feed, :layout => false
 end
 
 get '/rss.xml' do
