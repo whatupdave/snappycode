@@ -7,14 +7,13 @@
   
   Ever written code like this?
 
-%pre.prettyprint
-  var money = Regex.Replace(@" $ 1,337", @"[\$\s\,]", "");
-:markdown
+      var money = Regex.Replace(@" $ 1,337", @"[\$\s\,]", "");
+
   Regular expressions are so important to programming that they should be catered for in the language. At least Ruby and Javascript agree with me.
   
   If c# understood regular expressions as a native type, we could have code like this:
 
-%pre.prettyprint
-  var money = @" $ 1,337".Replace(/[\$\s\,]/, "")
-:markdown
+
+      var money = @" $ 1,337".Replace(/[\$\s\,]/, "")
+
   You can instantly spot the regex, it doesn't have to be @ encoded into a string. We can also then have a replace method overload that takes a string or a regex type without any new Regex() bs.

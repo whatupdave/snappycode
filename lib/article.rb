@@ -9,7 +9,7 @@ class Article
   end
   
   def self.article_files
-    Dir.glob(articles_dir + '*.*')
+    Dir.glob(articles_dir + '*.*').reject { |article| article.match /\/draft/}
   end
   
   def self.all_articles

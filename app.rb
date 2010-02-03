@@ -14,9 +14,15 @@ helpers do
   def transform_ampersands(html)
     html.gsub(' & '," <span class='amp'>&</span> ")
   end
+  
+  def prettify_code_blocks(html)
+    html.gsub(/\<code\>/, '<code class="prettyprint">')
+  end
 
   def render_article(article)
-    haml(transform_ampersands(article.content), :layout => false)
+    prettify_code_blocks(
+      haml(
+        transform_ampersands(article.content), :layout => false))
   end  
   
   def tweets_html

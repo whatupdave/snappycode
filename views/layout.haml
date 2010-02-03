@@ -22,15 +22,18 @@
         %a.rss{ :href => 'http://feeds2.feedburner.com/snappycode' }
           %img{ :src => '/images/rss.png', :alt => 'rss'}
     
-    #articles
-      = yield
-    
-    #me
-      = partial :me
+    #container
+      #articles
+        = yield
       
-    #footer
-      = partial :footer
+      #me
+        = partial :me
       
+      #footer
+        = partial :footer
+
+    %script{:src => '/js/prettify/prettify.js', :type => 'text/javascript'}
+          
     :javascript
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -52,7 +55,3 @@
       	}
       	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/snappycode/get_num_replies.js' + query + '"></' + 'script>');
       })();
-    
-    %script{:src => '/js/prettify/prettify.js', :type => 'text/javascript'}
-    
-    
